@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
   });
 
   return (
-    <div className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center p-6">
+    <div className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center p-6" enable-xr>
       {/* Left side - App title */}
       <div>
         <h1 className="text-2xl text-gray-900 font-medium">IdeaVerse</h1>

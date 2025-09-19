@@ -3,7 +3,7 @@ import { Edit, Share } from 'lucide-react';
 
 export const EnhancedCanvasPanel: React.FC = () => {
   return (
-    <div className="relative w-[600px] h-[500px] bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg">
+    <div className="relative w-[600px] h-[500px] bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg" enable-xr>
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 p-6 border-b border-gray-200/50">
         <div className="flex items-center justify-between">

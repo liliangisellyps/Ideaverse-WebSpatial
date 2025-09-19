@@ -46,6 +46,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       hover:scale-105 cursor-pointer group
       ${className}
     `} 
+    enable-xr
     >
       {/* Color accent dot */}
       <div className={`absolute top-5 left-5 w-3 h-3 ${style.accent} rounded-full`} />

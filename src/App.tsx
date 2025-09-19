@@ -11,18 +11,15 @@ import './App.css';
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-hidden">
-      {/* Subtle background pattern */}
-      {/* <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-300/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div> */}
-      
+    <div className="min-h-screen overflow-hidden" style={{
+      '--xr-background-material': 'transparent',
+      'background-color': 'transparent'
+    }}
+    enable-xr>
       {/* Main content */}
       <div className="relative min-h-screen pt-24" style={{ perspective: '2000px' }}>
         {/* Left side - Task cards */}
-        <div className="absolute left-8 top-1/2 -translate-y-1/2 space-y-6">
+        <div className="absolute top-1/2 -translate-y-1/2 space-y-6" style={{ left: '32px' }}>
           <div
             style={{
               transform: 'translateZ(60px) rotateY(8deg)',
@@ -67,8 +64,9 @@ export default function App() {
         
         {/* Center - Canvas */}
         <div 
-          className="absolute top-1/2 left-1/2 z-10"
+          className="absolute top-1/2 z-10"
           style={{
+            left: '49%',
             transform: 'translate(-50%, -50%) translateZ(0px)',
           }}
         >
@@ -76,7 +74,7 @@ export default function App() {
         </div>
         
         {/* Right side - Focus and Timer */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 space-y-8">
+        <div className="absolute top-1/2 -translate-y-1/2 space-y-8" style={{ left: 'calc(100% - 340px)' }}>
           <div
             style={{
               transform: 'translateZ(70px) rotateY(-8deg)',
@@ -89,19 +87,10 @@ export default function App() {
             style={{
               transform: 'translateZ(90px) rotateY(-12deg)',
             }}
-            className="mr-4"
           >
             <EnhancedTimerPanel />
           </div>
         </div>
-      </div>
-      
-      
-      {/* Ambient lighting effects for depth */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-400/5 rounded-full blur-2xl"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-400/3 rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
     </div>
   );

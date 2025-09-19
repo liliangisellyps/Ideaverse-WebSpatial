@@ -187,3 +187,10 @@
 html {
   font-size: var(--font-size);
 }
+
+html.is-spatial {
+  background-color: transparent !important;
+  --xr-background-material: transparent;
+  --background: transparent !important;
+}
+

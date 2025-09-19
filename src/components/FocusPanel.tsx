@@ -23,7 +23,7 @@ export const FocusPanel: React.FC = () => {
   };
 
   return (
-    <div className="w-80 bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg p-6">
+    <div className="w-80 bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg p-6" enable-xr>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-gray-900 font-semibold">Today's Focus</h3>
