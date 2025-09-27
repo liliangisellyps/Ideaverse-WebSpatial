@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trash2 } from 'lucide-react';
 
 interface TaskCardProps {
   title: string;
@@ -6,6 +7,7 @@ interface TaskCardProps {
   color: 'blue' | 'purple' | 'green';
   icon?: React.ReactNode;
   className?: string;
+  onDelete?: () => void;
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({ 
@@ -13,7 +15,8 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   description, 
   color, 
   icon,
-  className = '' 
+  className = '',
+  onDelete
 }) => {
   const colorStyles = {
     blue: {
@@ -64,6 +67,16 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       
       {/* Subtle glow on hover */}
       <div className={`absolute inset-0 rounded-2xl ${style.accent} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+      
+      {/* Delete button */}
+      {onDelete && (
+        <button
+          onClick={onDelete}
+          className="absolute top-2 right-2 w-6 h-6 bg-red-100 hover:bg-red-200 rounded flex items-center justify-center opacity-100 transition-opacity duration-200"
+        >
+          <Trash2 className="w-4 h-4 text-red-500" />
+        </button>
+      )}
     </div>
   );
 };
