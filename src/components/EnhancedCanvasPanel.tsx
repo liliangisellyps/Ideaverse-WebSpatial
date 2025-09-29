@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Edit, Eraser, Download } from 'lucide-react';
+import { Edit, Eraser } from 'lucide-react';
 
 export const EnhancedCanvasPanel: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -95,15 +95,6 @@ export const EnhancedCanvasPanel: React.FC = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
-  const downloadCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const link = document.createElement('a');
-    link.download = 'canvas-drawing.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  };
   return (
     <div className="relative w-[600px] h-[500px] bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg" enable-xr>
       <div className="absolute top-0 left-0 right-0 p-6 border-b border-gray-200/50">
@@ -127,14 +118,6 @@ export const EnhancedCanvasPanel: React.FC = () => {
               type="button"
             >
               <Edit className="w-4 h-4 text-gray-600" />
-            </button>
-            <button 
-              onClick={downloadCanvas}
-              className="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
-              aria-label="Download drawing"
-              type="button"
-            >
-              <Download className="w-4 h-4 text-gray-600" />
             </button>
           </div>
         </div>
