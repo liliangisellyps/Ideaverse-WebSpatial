@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 
 export const EnhancedTimerPanel: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState(18 * 60 + 42); // 18:42 from the design
+  const [timeLeft, setTimeLeft] = useState(18 * 60 + 42);
   const [isRunning, setIsRunning] = useState(false);
   const initialTime = 25 * 60;
 
@@ -92,11 +92,12 @@ export const EnhancedTimerPanel: React.FC = () => {
         <p className="text-gray-600 text-sm">Deep Work Session</p>
       </div>
       
-      {/* Controls */}
       <div className="flex justify-center gap-4">
         <button
           onClick={toggleTimer}
           className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg"
+          aria-label={isRunning ? 'Pause timer' : 'Start timer'}
+          type="button"
         >
           {isRunning ? (
             <Pause className="w-5 h-5 text-white" />
@@ -108,6 +109,8 @@ export const EnhancedTimerPanel: React.FC = () => {
         <button
           onClick={resetTimer}
           className="w-12 h-12 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
+          aria-label="Reset timer"
+          type="button"
         >
           <RotateCcw className="w-5 h-5 text-gray-600" />
         </button>

@@ -1,25 +1,7 @@
-html.is-spatial {
-    background-color: transparent !important;
-    --xr-background-material: transparent;
-    --background: transparent !important;
-  
-    #root {
-      background-color: transparent !important;
-      --xr-background-material: transparent;
-      --background: transparent !important;
-    }
-    
-    .min-h-screen {
-      background-color: transparent !important;
-      --xr-background-material: transparent;
-      --background: transparent !important;
-    }
-  
-  }
-
-html.is-spatial {
+html.is-spatial,
+html.is-spatial #root,
+html.is-spatial .min-h-screen {
   background-color: transparent !important;
-  background: transparent !important;
   --xr-background-material: transparent !important;
   --background: transparent !important;
 }
