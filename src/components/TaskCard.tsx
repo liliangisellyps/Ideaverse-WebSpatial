@@ -23,19 +23,22 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       bg: 'bg-blue-50/90',
       border: 'border-blue-200/60',
       accent: 'bg-blue-500',
-      text: 'text-blue-900'
+      text: 'text-blue-900',
+      icon: 'text-blue-500'
     },
     purple: {
       bg: 'bg-purple-50/90',
       border: 'border-purple-200/60', 
       accent: 'bg-purple-500',
-      text: 'text-purple-900'
+      text: 'text-purple-900',
+      icon: 'text-purple-500'
     },
     green: {
       bg: 'bg-green-50/90',
       border: 'border-green-200/60',
       accent: 'bg-green-500', 
-      text: 'text-green-900'
+      text: 'text-green-900',
+      icon: 'text-green-500'
     }
   };
 
@@ -51,33 +54,28 @@ export const TaskCard: React.FC<TaskCardProps> = ({
     `} 
     enable-xr
     >
-      {/* Color accent dot */}
       <div className={`absolute top-5 left-5 w-3 h-3 ${style.accent} rounded-full`} />
       
-      {/* Content */}
-      <div className="ml-6">
+      <div className="relative z-10 ml-6">
         <h3 className={`${style.text} font-semibold mb-2`}>{title}</h3>
         <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-        {icon && (
-          <div className="mt-3 flex justify-end">
-            {icon}
-          </div>
-        )}
+        <div className="mt-3 flex justify-end items-center gap-2">
+          {icon}
+          {onDelete && (
+            <button
+              onClick={onDelete}
+              className="w-6 h-6 rounded flex items-center justify-center hover:bg-gray-100"
+              aria-label="Delete task"
+              title="Delete task"
+              type="button"
+            >
+              <Trash2 className={`w-4 h-4 ${style.icon}`} />
+            </button>
+          )}
+        </div>
       </div>
       
-      {/* Subtle glow on hover */}
-      <div className={`absolute inset-0 rounded-2xl ${style.accent} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-      
-      {/* Delete button */}
-      {onDelete && (
-        <button
-          onClick={onDelete}
-          className="absolute top-2 right-2 w-6 h-6 bg-red-100 hover:bg-red-200 rounded flex items-center justify-center opacity-100 transition-opacity duration-200"
-          aria-label="Delete task"
-        >
-          <Trash2 className="w-4 h-4 text-red-500" />
-        </button>
-      )}
+      <div className={`absolute inset-0 rounded-2xl ${style.accent} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`} />
     </div>
   );
 };
