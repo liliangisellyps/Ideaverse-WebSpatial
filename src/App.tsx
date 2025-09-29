@@ -77,6 +77,19 @@ export default function App() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDescription, setNewTaskDescription] = useState('');
   const [newTaskColor, setNewTaskColor] = useState<Color>('blue');
+  const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
+
+  const resetForm = () => {
+    setNewTaskTitle('');
+    setNewTaskDescription('');
+    setNewTaskColor('blue');
+    setEditingTaskId(null);
+  };
+
+  const openAddForm = () => {
+    resetForm();
+    setShowAddForm(true);
+  };
 
   const addTaskCard = () => {
     if (newTaskTitle.trim() && newTaskDescription.trim()) {
@@ -91,14 +104,42 @@ export default function App() {
       };
       
       setTaskCards([...taskCards, newTask]);
-      setNewTaskTitle('');
-      setNewTaskDescription('');
+      resetForm();
       setShowAddForm(false);
     }
   };
 
   const deleteTaskCard = (id: number) => {
     setTaskCards(taskCards.filter(task => task.id !== id));
+  };
+
+  const editTaskCard = (id: number) => {
+    setShowAddForm(true);
+    const task = taskCards.find(t => t.id === id);
+    if (task) {
+      setEditingTaskId(id);
+      setNewTaskTitle(task.title);
+      setNewTaskDescription(task.description);
+      setNewTaskColor(task.color);
+    }
+  };
+
+  const saveTaskEdits = () => {
+    if (!editingTaskId) return;
+    if (!newTaskTitle.trim() || !newTaskDescription.trim()) return;
+    setTaskCards(taskCards.map(task => 
+      task.id === editingTaskId
+        ? {
+            ...task,
+            title: newTaskTitle,
+            description: newTaskDescription,
+            color: newTaskColor,
+            icon: COLOR_TO_ICON[newTaskColor],
+          }
+        : task
+    ));
+    resetForm();
+    setShowAddForm(false);
   };
 
   return (
@@ -112,7 +153,7 @@ export default function App() {
            <div className="absolute top-1/2 -translate-y-1/2 z-20" style={{ left: 'calc(360px)' }}>
              <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-6 h-[500px]" style={{ width: '300px' }}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">New Task</h3>
+              <h3 className="font-semibold text-gray-900">{editingTaskId ? 'Edit Task' : 'New Task'}</h3>
               <button 
                 onClick={() => setShowAddForm(false)}
                 className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center"
@@ -150,13 +191,22 @@ export default function App() {
                 />
               ))}
             </div>
-            <button
-              onClick={addTaskCard}
-              className="w-full px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors"
-              type="button"
-            >
-              Add Task
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={editingTaskId ? saveTaskEdits : addTaskCard}
+                className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors"
+                type="button"
+              >
+                {editingTaskId ? 'Save Changes' : 'Add Task'}
+              </button>
+              <button
+                onClick={() => { resetForm(); setShowAddForm(false); }}
+                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-gray-200 transition-colors"
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
             </div>
           </div>
         )}
@@ -164,7 +214,7 @@ export default function App() {
         <div className="absolute top-1/2 -translate-y-1/2 space-y-6" style={{ left: '32px' }}>
           <div className="mb-4">
             <button 
-              onClick={() => setShowAddForm(!showAddForm)}
+              onClick={openAddForm}
               className="w-12 h-12 bg-blue-100 hover:bg-blue-200 rounded-full flex items-center justify-center transition-colors shadow-lg"
               aria-label="Add task"
               type="button"
@@ -185,6 +235,7 @@ export default function App() {
                 color={task.color}
                 icon={task.icon}
                 onDelete={() => deleteTaskCard(task.id)}
+                onEdit={() => editTaskCard(task.id)}
               />
             </div>
           ))}

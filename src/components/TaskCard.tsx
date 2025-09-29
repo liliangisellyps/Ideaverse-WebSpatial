@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Edit2 } from 'lucide-react';
 
 interface TaskCardProps {
   title: string;
@@ -8,6 +8,7 @@ interface TaskCardProps {
   icon?: React.ReactNode;
   className?: string;
   onDelete?: () => void;
+  onEdit?: () => void;
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({ 
@@ -16,7 +17,8 @@ export const TaskCard: React.FC<TaskCardProps> = ({
   color, 
   icon,
   className = '',
-  onDelete
+  onDelete,
+  onEdit
 }) => {
   const colorStyles = {
     blue: {
@@ -61,6 +63,17 @@ export const TaskCard: React.FC<TaskCardProps> = ({
         <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
         <div className="mt-3 flex justify-end items-center gap-2">
           {icon}
+          {onEdit && (
+            <button
+              onClick={onEdit}
+              className="w-6 h-6 rounded flex items-center justify-center hover:bg-gray-100"
+              aria-label="Edit task"
+              title="Edit task"
+              type="button"
+            >
+              <Edit2 className={`w-4 h-4 ${style.icon}`} />
+            </button>
+          )}
           {onDelete && (
             <button
               onClick={onDelete}
