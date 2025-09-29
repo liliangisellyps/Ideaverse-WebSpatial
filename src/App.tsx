@@ -150,8 +150,8 @@ export default function App() {
     enable-xr>
       <div className="relative min-h-screen pt-24" style={{ perspective: '2000px' }}>
          {showAddForm && (
-           <div className="absolute top-1/2" style={{ left: '49%', transform: 'translate(-50%, -50%)', zIndex: 9999 }}>
-             <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-6 h-[300px]" style={{ width: '600px' }}>
+           <div className="absolute top-1/2" style={{ left: '49%', transform: 'translate(-50%, -150%)', zIndex: 9999 }}>
+             <div className="bg-white rounded-2xl shadow-2xl p-6 h-[300px]" style={{ width: '600px' }}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-gray-900">{editingTaskId ? 'Edit Task' : 'New Task'}</h3>
               <button 
@@ -245,7 +245,7 @@ export default function App() {
           className="absolute top-1/2 z-10 transition-all duration-300"
           style={{
             left: '49%',
-            transform: showAddForm ? 'translate(-50%, 50%) translateZ(0px)' : 'translate(-50%, -50%) translateZ(0px)',
+            transform: showAddForm ? 'translate(-50%, -20%) translateZ(0px)' : 'translate(-50%, -50%) translateZ(0px)',
           }}
         >
           <EnhancedCanvasPanel />

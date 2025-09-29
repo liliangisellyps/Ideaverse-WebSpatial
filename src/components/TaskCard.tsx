@@ -50,7 +50,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
     <div className={`
       relative w-64 backdrop-blur-md border rounded-2xl p-5 
       ${style.bg} ${style.border}
-      shadow-lg hover:shadow-xl transition-all duration-300 
+      shadow-2xl hover:shadow-2xl transition-all duration-300 
       hover:scale-105 cursor-pointer group
       ${className}
     `} 
@@ -66,7 +66,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
           {onEdit && (
             <button
               onClick={onEdit}
-              className="w-6 h-6 rounded flex items-center justify-center hover:bg-gray-100"
+              className="w-6 h-6 rounded flex items-center justify-center hover:bg-white/20 bg-white/10"
               aria-label="Edit task"
               title="Edit task"
               type="button"
@@ -77,7 +77,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
           {onDelete && (
             <button
               onClick={onDelete}
-              className="w-6 h-6 rounded flex items-center justify-center hover:bg-gray-100"
+              className="w-6 h-6 rounded flex items-center justify-center hover:bg-white/20 bg-white/10"
               aria-label="Delete task"
               title="Delete task"
               type="button"

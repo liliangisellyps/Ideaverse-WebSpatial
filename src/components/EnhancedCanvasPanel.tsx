@@ -96,7 +96,7 @@ export const EnhancedCanvasPanel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[600px] h-[500px] bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg" enable-xr>
+    <div className="relative w-[600px] h-[500px] bg-white/30 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl" enable-xr>
       <div className="absolute top-0 left-0 right-0 p-6 border-b border-gray-200/50">
         <div className="flex items-center justify-between">
           <h2 className="text-gray-900 font-semibold text-lg">IdeaVerse Canvas</h2>

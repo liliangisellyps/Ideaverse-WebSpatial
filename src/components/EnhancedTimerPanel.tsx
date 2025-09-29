@@ -36,11 +36,10 @@ export const EnhancedTimerPanel: React.FC = () => {
   };
 
   return (
-    <div className="w-80 bg-white/90 backdrop-blur-md border border-gray-200/60 rounded-3xl shadow-lg p-8" enable-xr>
-      {/* Header */}
+    <div className="w-80 bg-white/30 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl p-8" enable-xr>
       <div className="flex items-center justify-between mb-8">
         <h3 className="text-gray-900 font-semibold">Focus Session</h3>
-        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
           <span className="text-gray-600 text-sm">!</span>
         </div>
       </div>
