@@ -4,7 +4,7 @@ import { Edit, Eraser } from 'lucide-react';
 export const EnhancedCanvasPanel: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [brushSize, setBrushSize] = useState(2);
+  const [brushSize, setBrushSize] = useState(5);
   const [brushColor, setBrushColor] = useState('#000000');
   const [isErasing, setIsErasing] = useState(false);
 
