@@ -245,7 +245,7 @@ export default function App() {
           className="absolute top-1/2 z-10 transition-all duration-300"
           style={{
             left: '49%',
-            transform: showAddForm ? 'translate(-50%, -50%) translateZ(0px)' : 'translate(-50%, -6eu 0%) translateZ(0px)',
+            transform: showAddForm ? 'translate(-50%, -50%) translateZ(0px)' : 'translate(-50%, -50%) translateZ(0px)',
           }}
         >
           <EnhancedCanvasPanel />
