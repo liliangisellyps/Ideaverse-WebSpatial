@@ -22,24 +22,24 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 }) => {
   const colorStyles = {
     blue: {
-      bg: 'bg-blue-50/90',
+      bg: 'bg-blue-500/20',
       border: 'border-blue-200/60',
       accent: 'bg-blue-500',
-      text: 'text-blue-900',
+      text: 'text-white',
       icon: 'text-blue-500'
     },
     purple: {
-      bg: 'bg-purple-50/90',
+      bg: 'bg-purple-500/20',
       border: 'border-purple-200/60', 
       accent: 'bg-purple-500',
-      text: 'text-purple-900',
+      text: 'text-white',
       icon: 'text-purple-500'
     },
     green: {
-      bg: 'bg-green-50/90',
+      bg: 'bg-green-500/20',
       border: 'border-green-200/60',
       accent: 'bg-green-500', 
-      text: 'text-green-900',
+      text: 'text-white',
       icon: 'text-green-500'
     }
   };
@@ -48,10 +48,10 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 
   return (
     <div className={`
-      relative w-64 backdrop-blur-md border rounded-2xl p-5 
+      relative w-64 rounded-2xl p-5 
       ${style.bg} ${style.border}
       shadow-2xl hover:shadow-2xl transition-all duration-300 
-      hover:scale-105 cursor-pointer group
+      hover:scale-105 cursor-pointer group spatial-translucent
       ${className}
     `} 
     enable-xr
@@ -60,7 +60,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
       
       <div className="relative z-10 ml-6">
         <h3 className={`${style.text} font-semibold mb-2`}>{title}</h3>
-        <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+        <p className="text-white text-sm leading-relaxed">{description}</p>
         <div className="mt-3 flex justify-end items-center gap-2">
           {icon}
           {onEdit && (

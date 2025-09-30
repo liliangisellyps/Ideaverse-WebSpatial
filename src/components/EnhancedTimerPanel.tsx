@@ -36,19 +36,17 @@ export const EnhancedTimerPanel: React.FC = () => {
   };
 
   return (
-    <div className="w-80 bg-white/30 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl p-8" enable-xr>
+    <div className="w-80 bg-white/20 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl p-8 spatial-translucent" enable-xr>
       <div className="flex items-center justify-between mb-8">
-        <h3 className="text-gray-900 font-semibold">Focus Session</h3>
+        <h3 className="text-white font-semibold">Focus Session</h3>
         <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-          <span className="text-gray-600 text-sm">!</span>
+          <span className="text-white text-sm">!</span>
         </div>
       </div>
       
-      {/* Timer display */}
       <div className="relative mb-8 flex justify-center">
         <div className="relative">
           <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-            {/* Background circle */}
             <circle
               cx="50"
               cy="50"
@@ -57,7 +55,6 @@ export const EnhancedTimerPanel: React.FC = () => {
               strokeWidth="8"
               fill="transparent"
             />
-            {/* Progress circle - gradient from purple to pink */}
             <defs>
               <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#8b5cf6" />
@@ -78,17 +75,15 @@ export const EnhancedTimerPanel: React.FC = () => {
             />
           </svg>
           
-          {/* Time text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-gray-900 text-3xl font-mono">{formatTime(timeLeft)}</span>
-            <span className="text-gray-500 text-xs mt-1">remaining</span>
+            <span className="text-white text-3xl font-mono">{formatTime(timeLeft)}</span>
+            <span className="text-white text-xs mt-1">remaining</span>
           </div>
         </div>
       </div>
       
-      {/* Session info */}
       <div className="text-center mb-8">
-        <p className="text-gray-600 text-sm">Deep Work Session</p>
+        <p className="text-white text-sm">Deep Work Session</p>
       </div>
       
       <div className="flex justify-center gap-4">
@@ -111,7 +106,7 @@ export const EnhancedTimerPanel: React.FC = () => {
           aria-label="Reset timer"
           type="button"
         >
-          <RotateCcw className="w-5 h-5 text-gray-600" />
+          <RotateCcw className="w-5 h-5 text-white" />
         </button>
       </div>
     </div>

@@ -64,19 +64,19 @@ export const FocusPanel: React.FC = () => {
   };
 
   return (
-    <div className="w-80 bg-white/30 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl p-6" enable-xr>
+    <div className="w-80 bg-white/20 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl p-6 spatial-translucent" enable-xr>
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-gray-900 font-semibold">Today's Focus</h3>
+        <h3 className="text-white font-semibold">Today's Focus</h3>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-            <span className="text-gray-600 text-sm">{items.filter(item => !item.completed).length}</span>
+            <span className="text-sm">{items.filter(item => !item.completed).length}</span>
           </div>
           <button 
             onClick={() => setShowAddForm(!showAddForm)}
             className="w-8 h-8 bg-blue-100 hover:bg-blue-200 rounded-full flex items-center justify-center transition-colors"
             aria-label="Add focus item"
           >
-            <Plus className="w-4 h-4 text-blue-600" />
+            <Plus className="w-4 h-4 text-white" />
           </button>
         </div>
       </div>
@@ -88,7 +88,7 @@ export const FocusPanel: React.FC = () => {
             value={newItemText}
             onChange={(e) => setNewItemText(e.target.value)}
             placeholder="New task..."
-            className="w-full p-2 border border-gray-200 rounded-lg text-sm mb-2"
+            className="w-full p-2 border border-gray-200 rounded-lg text-sm mb-2 text-white"
             onKeyDown={(e) => e.key === 'Enter' && addItem()}
           />
           <div className="flex gap-2">
@@ -101,7 +101,7 @@ export const FocusPanel: React.FC = () => {
             </button>
             <button
               onClick={() => setShowAddForm(false)}
-              className="px-3 py-1 bg-gray-200 text-gray-600 rounded-lg text-sm hover:bg-gray-300 transition-colors"
+              className="px-3 py-1 bg-gray-200 text-gray-400 rounded-lg text-sm hover:bg-gray-300 transition-colors"
               type="button"
             >
               Cancel
@@ -110,7 +110,6 @@ export const FocusPanel: React.FC = () => {
         </div>
       )}
       
-      {/* Focus items */}
       <div className="space-y-3">
         {items.map((item) => (
           <div 
@@ -133,7 +132,7 @@ export const FocusPanel: React.FC = () => {
                   type="text"
                   value={editingText}
                   onChange={(e) => setEditingText(e.target.value)}
-                  className="flex-1 p-1 border border-gray-200 rounded text-sm"
+                  className="flex-1 p-1 border border-gray-200 rounded text-sm text-white"
                   onKeyDown={(e) => e.key === 'Enter' && saveEdit()}
                   autoFocus
                 />
@@ -147,7 +146,7 @@ export const FocusPanel: React.FC = () => {
                 </button>
                 <button
                   onClick={cancelEdit}
-                  className="w-6 h-6 bg-gray-400 text-white rounded flex items-center justify-center"
+                  className="w-6 h-6 text-white rounded flex items-center justify-center"
                   aria-label="Cancel edit"
                   type="button"
                 >
@@ -159,8 +158,8 @@ export const FocusPanel: React.FC = () => {
                 <span className={`
                   text-sm transition-all duration-200 flex-1 cursor-pointer
                   ${item.completed 
-                    ? 'text-gray-500 line-through' 
-                    : 'text-gray-700'
+                    ? 'text-gray-400 line-through' 
+                    : 'text-white'
                   }
                 `} onClick={() => toggleItem(item.id)}>
                   {item.text}
@@ -168,11 +167,11 @@ export const FocusPanel: React.FC = () => {
                 <div className="flex gap-1 opacity-100 transition-opacity">
                   <button
                     onClick={() => startEdit(item.id, item.text)}
-                    className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded flex items-center justify-center"
+                    className="w-6 h-6 hover:bg-gray-200 rounded flex items-center justify-center"
                     aria-label="Edit item"
                     type="button"
                   >
-                    <Edit2 className="w-4 h-4 text-gray-600" />
+                    <Edit2 className="w-4 h-4 text-white" />
                   </button>
                   <button
                     onClick={() => deleteItem(item.id)}
@@ -180,7 +179,7 @@ export const FocusPanel: React.FC = () => {
                     aria-label="Delete item"
                     type="button"
                   >
-                    <Trash2 className="w-4 h-4 text-red-600" />
+                    <Trash2 className="w-4 h-4 text-white" />
                   </button>
                 </div>
               </>

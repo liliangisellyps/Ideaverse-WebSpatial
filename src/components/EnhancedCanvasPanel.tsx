@@ -96,15 +96,15 @@ export const EnhancedCanvasPanel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-[600px] h-[500px] bg-white/30 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl" enable-xr>
-      <div className="absolute top-0 left-0 right-0 p-6 border-b border-gray-200/50">
+    <div className="relative w-[600px] h-[500px] bg-white/20 backdrop-blur-md border border-white/50 rounded-3xl shadow-2xl spatial-translucent overflow-hidden" enable-xr>
+      <div className="absolute top-0 left-0 right-0 p-6 border-b border-gray-200/50 z-10">
         <div className="flex items-center justify-between">
-          <h2 className="text-gray-900 font-semibold text-lg">IdeaVerse Canvas</h2>
+          <h2 className="text-white font-semibold text-lg">IdeaVerse Canvas</h2>
           <div className="flex gap-2">
             <button 
               onClick={() => setIsErasing(!isErasing)}
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                isErasing ? 'bg-red-100 text-red-600' : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                isErasing ? 'bg-gray-100 hover:bg-gray-200s' : 'text-gray-600'
               }`}
               aria-label={isErasing ? 'Disable eraser' : 'Enable eraser'}
               type="button"
@@ -123,8 +123,8 @@ export const EnhancedCanvasPanel: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute inset-0 top-20 p-4">
-        <div className="relative w-full h-full">
+      <div className="absolute inset-0 top-20 p-4 flex flex-col">
+        <div className="flex-1 relative min-h-0">
           <canvas
             ref={canvasRef}
             onPointerDown={startDrawing}
@@ -136,15 +136,17 @@ export const EnhancedCanvasPanel: React.FC = () => {
               touchAction: 'none',
               userSelect: 'none',
               WebkitUserSelect: 'none',
-              WebkitTouchCallout: 'none'
+              WebkitTouchCallout: 'none',
+              maxHeight: '100%',
+              maxWidth: '100%'
             }}
             aria-label="Drawing canvas"
           />
         </div>
         
-        <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl p-3 flex items-center gap-4">
+        <div className="mt-4 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl p-3 flex items-center gap-4 flex-shrink-0">
           <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-600">Color:</label>
+            <label className="text-sm text-gray-500">Color:</label>
             <input
               type="color"
               value={brushColor}
@@ -156,7 +158,7 @@ export const EnhancedCanvasPanel: React.FC = () => {
           </div>
           
           <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-600">Size:</label>
+            <label className="text-sm text-gray-500">Size:</label>
             <input
               type="range"
               min="1"

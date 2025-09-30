@@ -143,7 +143,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{
+    <div className="min-h-screen" style={{
       '--xr-background-material': 'transparent',
       backgroundColor: 'transparent'
     }}
@@ -151,16 +151,16 @@ export default function App() {
       <div className="relative min-h-screen pt-24" style={{ perspective: '2000px' }}>
          {showAddForm && (
            <div className="absolute top-1/2" style={{ left: '49%', transform: 'translate(-50%, -150%)', zIndex: 9999 }}>
-             <div className="bg-white rounded-2xl shadow-2xl p-6 h-[300px]" style={{ width: '600px' }}>
+             <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl p-6 h-[300px] spatial-translucent" style={{ width: '600px' }} enable-xr>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">{editingTaskId ? 'Edit Task' : 'New Task'}</h3>
+              <h3 className="font-semibold text-white">{editingTaskId ? 'Edit Task' : 'New Task'}</h3>
               <button 
                 onClick={() => setShowAddForm(false)}
                 className="w-6 h-6 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center"
                 aria-label="Close new task form"
                 type="button"
               >
-                <X className="w-3 h-3 text-gray-600" />
+                <X className="w-3 h-3" />
               </button>
             </div>
             <input
@@ -168,16 +168,16 @@ export default function App() {
               value={newTaskTitle}
               onChange={(e) => setNewTaskTitle(e.target.value)}
               placeholder="Task title..."
-              className="w-full p-3 border border-gray-200 rounded-xl text-sm mb-3"
+              className="w-full p-3 border border-gray-200 rounded-xl text-sm mb-4 text-white bg-white/10"
             />
             <textarea
               value={newTaskDescription}
               onChange={(e) => setNewTaskDescription(e.target.value)}
               placeholder="Task description..."
-              className="w-full p-3 border border-gray-200 rounded-xl resize-none h-20 text-sm mb-3"
+              className="w-full p-3 border border-gray-200 rounded-xl resize-none h-20 text-sm mb-4 text-white bg-white/10"
             />
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-sm text-gray-600">Color:</span>
+            <div className="flex items-center gap-2 mb-4 mt-1">
+              <span className="text-sm text-white">Color:</span>
               {(['blue', 'purple', 'green'] as const).map(color => (
                 <button
                   key={color}
@@ -201,7 +201,7 @@ export default function App() {
               </button>
               <button
                 onClick={() => { resetForm(); setShowAddForm(false); }}
-                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-gray-200 transition-colors"
+                className="px-4 py-2 bg-white/20 text-white rounded-lg text-sm hover:bg-white/30 transition-colors"
                 type="button"
               >
                 Cancel
@@ -245,7 +245,7 @@ export default function App() {
           className="absolute top-1/2 z-10 transition-all duration-300"
           style={{
             left: '49%',
-            transform: showAddForm ? 'translate(-50%, -20%) translateZ(0px)' : 'translate(-50%, -50%) translateZ(0px)',
+            transform: showAddForm ? 'translate(-50%, -50%) translateZ(0px)' : 'translate(-50%, -20%) translateZ(0px)',
           }}
         >
           <EnhancedCanvasPanel />
