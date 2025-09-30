@@ -106,7 +106,7 @@ export const EnhancedTimerPanel: React.FC = () => {
           aria-label="Reset timer"
           type="button"
         >
-          <RotateCcw className="w-5 h-5 text-white" />
+          <RotateCcw className="w-5 h-5" />
         </button>
       </div>
     </div>

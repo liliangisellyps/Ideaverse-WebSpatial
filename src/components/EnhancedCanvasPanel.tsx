@@ -104,7 +104,7 @@ export const EnhancedCanvasPanel: React.FC = () => {
             <button 
               onClick={() => setIsErasing(!isErasing)}
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                isErasing ? 'bg-gray-100 hover:bg-gray-200s' : 'text-gray-600'
+                isErasing ? 'bg-gray-100 hover:bg-gray-200s' : 'text-black'
               }`}
               aria-label={isErasing ? 'Disable eraser' : 'Enable eraser'}
               type="button"
@@ -117,7 +117,7 @@ export const EnhancedCanvasPanel: React.FC = () => {
               aria-label="Clear canvas"
               type="button"
             >
-              <Edit className="w-4 h-4 text-gray-600" />
+              <Edit className="w-4 h-4 text-black" />
             </button>
           </div>
         </div>
