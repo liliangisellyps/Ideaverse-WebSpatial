@@ -7,7 +7,11 @@
 
   export default defineConfig({
     plugins: [
-      webSpatial(),
+      webSpatial(
+        {
+          outputDir: '',
+        }
+      ),
       react(
       {
         jsxImportSource: "@webspatial/react-sdk",
